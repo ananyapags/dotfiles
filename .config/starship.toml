@@ -1,0 +1,48 @@
+# Oh My Zsh "robbyrussell" look — powered by Starship, tuned for big repos + Pixi
+
+# ---- Performance ----
+command_timeout = 1000
+scan_timeout = 30
+add_newline = false
+
+# ---- Layout: arrow, folder, git, then pixi env at the end ----
+format = "$character$directory$git_branch$git_status$pixi "
+
+# ---- Arrow: green on success, red on failure ----
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+# ---- Current folder in cyan ----
+[directory]
+style = "cyan"
+truncation_length = 1
+truncate_to_repo = false
+format = "  [$path]($style) "
+
+# ---- git:(branch) ----
+[git_branch]
+symbol = ""
+style = "bold red"
+format = '[git:\(](bold blue)[$branch]($style)[\)](bold blue)'
+
+# ---- Yellow marker when repo is dirty ----
+[git_status]
+style = "bold yellow"
+format = " [$all_status$ahead_behind]($style)"
+conflicted = "✗"
+untracked = "✗"
+modified = "✗"
+staged = "✗"
+renamed = "✗"
+deleted = "✗"
+stashed = ""
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+
+# ---- Pixi environment name (only shows when a pixi env is active) ----
+[pixi]
+symbol = ""
+style = "dimmed green"
+format = '[\($environment\)]($style)'

@@ -1,0 +1,56 @@
+-- ============ Core options ============
+vim.g.mapleader = " "
+vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.scrolloff = 8
+vim.opt.updatetime = 250
+
+-- ============ Bootstrap lazy.nvim ============
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- ============ Plugins ============
+require("lazy").setup({
+  { "folke/tokyonight.nvim", priority = 1000,
+    config = function() vim.cmd.colorscheme("tokyonight") end },
+
+  { "christoomey/vim-tmux-navigator" },
+
+  { "nvim-telescope/telescope.nvim", branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "Grep" },
+    },
+  },
+
+  { "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = { { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "File tree" } },
+    config = function() require("nvim-tree").setup() end,
+  },
+
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "lua", "python", "bash", "rust", "go", "json", "markdown" },
+        highlight = { enable = true },
+      })
+    end,
+  },
+})
