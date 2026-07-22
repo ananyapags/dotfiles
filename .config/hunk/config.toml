@@ -1,0 +1,3 @@
+theme = "one-dark"
+wrap_lines = true    # wrap long diff lines instead of truncating them
+line_numbers = true  # show real (old/new) line numbers on every row

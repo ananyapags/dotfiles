@@ -2,7 +2,15 @@
 vim.g.mapleader = " "
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false        -- normal, fixed line numbers (not relative/changing)
+
+-- ===== Soft wrap: wrap long lines, and indent the wrapped part =====
+vim.opt.wrap = true                   -- wrap lines that don't fit on screen
+vim.opt.linebreak = true              -- break at word boundaries, not mid-word
+vim.opt.breakindent = true            -- wrapped part keeps the line's indent
+vim.opt.breakindentopt = "shift:4"    -- ...plus 4 extra spaces so continuation is obvious
+vim.opt.showbreak = "↪ "              -- marker at the start of each wrapped segment
+
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -151,3 +159,7 @@ vim.keymap.set("n", "<leader>tc", "<cmd>Telescope colorscheme enable_preview=tru
 vim.opt.selectmode = "key"
 vim.opt.keymodel   = "startsel,stopsel"
 vim.opt.selection  = "exclusive"
+
+-- Backspace deletes a Visual-mode selection (mouse-drag or v + motion).
+-- Select mode (Shift+arrows) already deletes on Backspace by default.
+vim.keymap.set("x", "<BS>", "d", { desc = "Delete selection" })

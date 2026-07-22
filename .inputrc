@@ -1,0 +1,10 @@
+# Prefix-based history search: type part of a command, then Up/Down
+# cycles only through history entries with that prefix.
+
+# Normal cursor-key mode
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Application cursor-key mode (some terminals/modes send these)
+"\eOA": history-search-backward
+"\eOB": history-search-forward

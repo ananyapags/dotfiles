@@ -51,6 +51,28 @@ install_deps() {
 install_deps
 
 # ---------------------------------------------------------------------------
+# 1b. NVIDIA Nsight profilers (nsys / ncu) for GPU workspaces — best-effort.
+#     Usually shipped with the CUDA toolkit; try the apt packages if missing.
+#     .bash_profile picks them up from /usr/local/cuda and /opt/nvidia.
+# ---------------------------------------------------------------------------
+install_nsight() {
+  if have nsys && have ncu; then
+    log "Nsight tools already present (nsys, ncu)"
+    return
+  fi
+  have apt-get || return 0
+  local SUDO=""; [ "$(id -u)" -ne 0 ] && have sudo && SUDO="sudo"
+  local pkg
+  for pkg in nsight-systems-cli nsight-systems nsight-compute; do
+    $SUDO apt-get install -y "$pkg" >/dev/null 2>&1 && log "installed $pkg" || true
+  done
+  have nsys || log "nsys still missing — needs the NVIDIA CUDA apt repo or a manual Nsight Systems install"
+  have ncu  || log "ncu still missing — needs the NVIDIA CUDA apt repo or a manual Nsight Compute install"
+}
+
+install_nsight
+
+# ---------------------------------------------------------------------------
 # 2. Symlink dotfiles into $HOME
 # ---------------------------------------------------------------------------
 link() {
@@ -69,8 +91,12 @@ link() {
 link .bashrc
 link .bash_profile
 link .profile
+link .inputrc
 link .tmux.conf
 link .config/starship.toml
 link .config/nvim
+link .config/git/ignore
+link .config/htop/htoprc
+link .config/hunk/config.toml
 
 log "Done. Open a new shell to pick up the changes."
