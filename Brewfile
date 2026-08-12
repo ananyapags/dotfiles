@@ -21,6 +21,8 @@ brew "btop"
 brew "cmake"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -29,6 +31,8 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Render markdown on the CLI
+brew "glow"
 # Popular GNU data compression program
 brew "gzip"
 # Kubernetes package manager
@@ -37,6 +41,8 @@ brew "helm"
 brew "htop"
 # Website copier/offline browser
 brew "httrack"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
@@ -59,6 +65,8 @@ brew "ninja"
 brew "node"
 # Shell command parallelization utility
 brew "parallel"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Rsync for cloud storage
 brew "rclone"
 # Search tool like grep and The Silver Searcher
@@ -77,6 +85,8 @@ brew "tldr"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Terminal spreadsheet multitool for discovering and arranging data
 brew "visidata"
 # Standard Tooling for Vue.js Development
@@ -89,3 +99,14 @@ brew "zlib"
 cask "docker-desktop"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Full TeX Live distribution with GUI applications
+cask "mactex"
+vscode "akamud.vscode-theme-onedark"
+vscode "anysphere.remote-containers"
+vscode "anysphere.remote-ssh"
+vscode "coder.coder-remote"
+vscode "modular-mojotools.vscode-mojo-nightly"
+cargo "rustlings"
+npm "pnpm"
