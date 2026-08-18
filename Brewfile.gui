@@ -1,0 +1,16 @@
+# Large macOS GUI apps — installed by install.sh unless --no-gui is passed.
+# Adopt apps that already exist in /Applications instead of failing on them.
+cask_args adopt: true
+
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+# Mozilla web browser
+cask "firefox"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Full TeX Live distribution with GUI applications
+cask "mactex"
+# Team communication and collaboration software
+cask "slack"
+# Video communication and virtual meeting platform
+cask "zoom"

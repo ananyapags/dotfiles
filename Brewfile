@@ -1,4 +1,10 @@
-tap "coder/coder"
+# Adopt apps that already exist in /Applications instead of failing on them
+cask_args adopt: true
+# NOTE: pinned CLI tools (jq, kubectl, k9s, helm, stern, starship, bat, fzf,
+# neovim, coder, hunk, ...) live in .config/mise/config.toml, not here.
+# This file is for macOS system/CLI tools and fonts.
+# Large GUI apps (Docker, Firefox, Slack, Zoom, iTerm2, MacTeX) live in
+# Brewfile.gui — install.sh adds them unless run with --no-gui.
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Library for command-line editing
@@ -25,8 +31,6 @@ brew "duckdb"
 brew "duti"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -35,30 +39,20 @@ brew "git"
 brew "glow"
 # Popular GNU data compression program
 brew "gzip"
-# Kubernetes package manager
-brew "helm"
+# Terminal multiplexer for AI coding agents
+brew "herdr"
 # Improved top (interactive process viewer)
 brew "htop"
 # Website copier/offline browser
 brew "httrack"
-# Review-first terminal diff viewer for agent-authored changesets
-brew "hunk"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# Kubernetes CLI To Manage Your Clusters In Style!
-brew "k9s"
-# Tool that can switch between kubectl contexts easily and create aliases
-brew "kubectx"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
 # LLVM's OpenMP runtime library
 brew "libomp"
+# Polyglot tool version manager — installs the pinned CLI tools
+brew "mise"
 # Remote terminal application
 brew "mosh"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Open-source, cross-platform JavaScript runtime environment
@@ -73,10 +67,6 @@ brew "rclone"
 brew "ripgrep"
 # Rust toolchain installer
 brew "rustup"
-# Cross-shell prompt for astronauts
-brew "starship"
-# Tail multiple Kubernetes pods & their containers
-brew "stern"
 # Tool Command Language
 brew "tcl-tk"
 # Simplified and community-driven man pages
@@ -95,18 +85,13 @@ brew "vue-cli"
 brew "wget"
 # General-purpose lossless data-compression library
 brew "zlib"
-# App to build and share containerised applications and microservices
-cask "docker-desktop"
+# Anthropic's agentic coding CLI
+cask "claude-code"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
-# Full TeX Live distribution with GUI applications
-cask "mactex"
-vscode "akamud.vscode-theme-onedark"
-vscode "anysphere.remote-containers"
-vscode "anysphere.remote-ssh"
-vscode "coder.coder-remote"
-vscode "modular-mojotools.vscode-mojo-nightly"
+# Editor extensions are installed by install.sh via the cursor/code CLI,
+# not here — a fresh machine has no editor CLI when brew bundle runs.
 cargo "rustlings"
 npm "pnpm"
